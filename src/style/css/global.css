@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "avenir";
+  src: url(../../../public/font/avenirnext.otf) format("opentype");
+}
+@font-face {
+  font-family: "avenirBold";
+  src: url(../../../public/font/avenirnext-bold.otf) format("opentype");
+}
+
+.u-avenir {
+  font-family: "avenir";
+}
+.u-avenir-bold {
+  font-family: "avenirBold";
+}
