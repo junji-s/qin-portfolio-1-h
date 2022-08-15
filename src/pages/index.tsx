@@ -1,12 +1,11 @@
 import type { NextPage } from "next";
+import { IndexFv } from "src/components/organisms/index/IndexFv";
 
 const Home: NextPage = () => {
   return (
-    <div className="">
-      <div className="">
-        <h1>aaa</h1>
-      </div>
-    </div>
+    <>
+      <IndexFv />
+    </>
   );
 };
 
