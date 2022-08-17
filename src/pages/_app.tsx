@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { DefaultTemplate } from "src/components/templates/DefaultTemplate";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider
       withGlobalStyles
@@ -28,4 +28,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default App;
