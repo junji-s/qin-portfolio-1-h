@@ -7,14 +7,16 @@ import { ThemeChangeBtn } from "src/components/molecules/ThemeChangeBtn";
 
 export const Header = () => {
   return (
-    <Container py={20}>
-      <div className="flex items-center">
-        <PageLogo />
-        <div className="ml-auto mr-4">
-          <HeaderLinkList />
+    <header>
+      <Container py={20}>
+        <div className="flex items-center">
+          <PageLogo />
+          <div className="ml-auto mr-4">
+            <HeaderLinkList />
+          </div>
+          <ThemeChangeBtn />
         </div>
-        <ThemeChangeBtn />
-      </div>
-    </Container>
+      </Container>
+    </header>
   );
 };
