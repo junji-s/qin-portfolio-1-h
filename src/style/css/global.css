@@ -7,9 +7,26 @@
   src: url(../../../public/font/avenirnext-bold.otf) format("opentype");
 }
 
+body {
+  min-height: 100vh;
+}
+
 .u-avenir {
   font-family: "avenir";
 }
 .u-avenir-bold {
   font-family: "avenirBold";
+}
+
+.c-iconLabel {
+  color: #909296;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.c-iconLabel svg {
+  font-size: 18px;
+  margin-right: 3px;
 }
