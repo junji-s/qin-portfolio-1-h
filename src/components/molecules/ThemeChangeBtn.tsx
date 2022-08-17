@@ -22,4 +22,5 @@ const StThemeChangeBtn = styled.button`
   width: 34px;
   height: 34px;
   border-radius: 8px;
+  background: #fff;
 `;
