@@ -7,13 +7,13 @@ export const PageLogo = () => {
 
   return (
     <Link href="/">
-      <a className="block">
+      <a className="block text-center">
         {router.pathname === "/" ? (
           <h1 className="u-avenir-bold text-[17px] font-bold leading-none xs:text-[18px]">
             Shimabu IT University
           </h1>
         ) : (
-          <div className="u-avenir-bold text-[17px] font-bold leading-none">
+          <div className="u-avenir-bold text-[17px] font-bold leading-none xs:text-[18px]">
             Shimabu IT University
           </div>
         )}
