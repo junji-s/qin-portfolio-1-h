@@ -26,8 +26,8 @@ const StHeaderLinkList = styled.ul`
   @media (min-width: 768px) {
     display: flex;
   }
-  li {
-    a {
+  & > li {
+    & > a {
       display: inline-block;
     }
 
