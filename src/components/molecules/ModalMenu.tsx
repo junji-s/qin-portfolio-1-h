@@ -38,16 +38,24 @@ export const ModalMenu: FC = () => {
           </ModalCloseBtn>
           <Box>
             <Text mt={26}>
-              <ModalMenuLink text="About" href="/about" />
+              <ModalMenuLink text="About" href="/about" setOpened={setOpened} />
             </Text>
             <Text mt={16}>
-              <ModalMenuLink text="Blog" href="/blog" />
+              <ModalMenuLink text="Blog" href="/blog" setOpened={setOpened} />
             </Text>
             <Text mt={16}>
-              <ModalMenuLink text="Portfolio" href="/portfolio" />
+              <ModalMenuLink
+                text="Portfolio"
+                href="/portfolio"
+                setOpened={setOpened}
+              />
             </Text>
             <Text mt={16}>
-              <ModalMenuLink text="Contact" href="/contact" />
+              <ModalMenuLink
+                text="Contact"
+                href="/contact"
+                setOpened={setOpened}
+              />
             </Text>
           </Box>
         </Modal>
