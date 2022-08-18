@@ -24,8 +24,14 @@ export const PortfolioLink: FC<TypePortfolioLink> = ({
   return (
     <Link href="" passHref>
       <StPortfolioLink>
-        <ScrollArea type="never">
-          <Image src={src} alt="サムネイル画像" width={width} height={height} />
+        <ScrollArea type="never" className="scrollArea">
+          <Image
+            src={src}
+            alt="サムネイル画像"
+            width={width}
+            height={height}
+            layout="fill"
+          />
         </ScrollArea>
         <Box pb={5} px={10} className="flex flex-1 flex-col">
           <Text size={22} weight={700} className="... truncate " mt={5} mb={8}>
@@ -47,11 +53,14 @@ const StPortfolioLink = styled.a`
   height: 100%;
   transition: all 0.5s;
 
-  img {
-    width: 100%;
+  .scrollArea {
     aspect-ratio: 157 / 92;
-    object-fit: cover;
-    transition: all 0.5s;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s;
+    }
   }
 
   .date {

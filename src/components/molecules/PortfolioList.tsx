@@ -76,6 +76,14 @@ const StPortfolioList = styled.ul`
   flex-wrap: wrap;
   gap: 24px;
   li {
-    width: calc(100% / 3 - 16px);
+    width: 100%;
+
+    @media (min-width: 576px) {
+      width: calc(100% / 2 - 12px);
+    }
+
+    @media (min-width: 992px) {
+      width: calc(100% / 3 - 16px);
+    }
   }
 `;

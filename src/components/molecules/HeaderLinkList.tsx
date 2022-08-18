@@ -22,7 +22,10 @@ export const HeaderLinkList = () => {
 };
 
 const StHeaderLinkList = styled.ul`
-  display: flex;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+  }
   li {
     a {
       display: inline-block;

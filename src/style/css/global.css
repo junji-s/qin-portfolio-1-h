@@ -7,8 +7,17 @@
   src: url(../../../public/font/avenirnext-bold.otf) format("opentype");
 }
 
+html {
+  position: relative;
+  width: 100vw;
+  overflow-x: hidden;
+}
 body {
+  width: 100vw;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 74px;
 }
 
 .u-avenir {
@@ -29,4 +38,10 @@ body {
 .c-iconLabel svg {
   font-size: 18px;
   margin-right: 3px;
+}
+
+@media (min-width: 576px) {
+  body {
+    padding-top: 0;
+  }
 }
