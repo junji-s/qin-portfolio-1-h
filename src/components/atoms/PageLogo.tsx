@@ -6,20 +6,18 @@ export const PageLogo = () => {
   const router = useRouter();
 
   return (
-    <>
-      <Link href="/">
-        <a>
-          {router.pathname === "/" ? (
-            <h1 className="u-avenir-bold text-[18px] font-bold">
-              Shimabu IT University
-            </h1>
-          ) : (
-            <div className="u-avenir-bold text-[18px] font-bold">
-              Shimabu IT University
-            </div>
-          )}
-        </a>
-      </Link>
-    </>
+    <Link href="/">
+      <a className="block">
+        {router.pathname === "/" ? (
+          <h1 className="u-avenir-bold text-[17px] font-bold leading-none xs:text-[18px]">
+            Shimabu IT University
+          </h1>
+        ) : (
+          <div className="u-avenir-bold text-[17px] font-bold leading-none">
+            Shimabu IT University
+          </div>
+        )}
+      </a>
+    </Link>
   );
 };
