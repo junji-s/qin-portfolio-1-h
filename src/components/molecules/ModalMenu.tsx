@@ -33,9 +33,9 @@ export const ModalMenu: FC = () => {
             },
           }}
         >
-          <StModalCloseBtn type="button" onClick={() => setOpened(false)}>
+          <ModalCloseBtn type="button" onClick={() => setOpened(false)}>
             <CgClose size={30} color="white" />
-          </StModalCloseBtn>
+          </ModalCloseBtn>
           <Box>
             <Text mt={26}>
               <ModalMenuLink text="About" href="/about" setOpened={setOpened} />
@@ -64,6 +64,6 @@ export const ModalMenu: FC = () => {
   );
 };
 
-const StModalCloseBtn = styled.button`
+const ModalCloseBtn = styled.button`
   background: transparent;
 `;
