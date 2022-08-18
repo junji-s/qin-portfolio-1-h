@@ -29,7 +29,7 @@ export const PortfolioList: FC = () => {
       </li>
       <li>
         <PortfolioLink
-          src="/img/ogp.jpg"
+          src="/img/thumbnail.png"
           width={5001}
           height={2626}
           title="IT KINGDOM"
@@ -49,7 +49,7 @@ export const PortfolioList: FC = () => {
       </li>
       <li>
         <PortfolioLink
-          src="/img/ogp.jpg"
+          src="/img/thumbnail.png"
           width={5001}
           height={2626}
           title="IT KINGDOM"
