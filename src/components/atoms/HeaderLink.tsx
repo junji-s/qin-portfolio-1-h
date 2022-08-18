@@ -8,15 +8,12 @@ export const HeaderLink: FC<{ text: string; href: string }> = ({
   href,
 }) => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <Link href={href}>
       <a
-        className={`u-avenir-bold leading-non text-[18px] font-bold ${
-          router.pathname === "/" + text.toLowerCase()
-            ? "border-b-2 border-black"
-            : ""
+        className={`u-avenir-bold leading-non border-b-2 border-white text-[18px] font-bold  ${
+          router.pathname === "/" + text.toLowerCase() ? "border-black" : ""
         }`}
       >
         {text}
