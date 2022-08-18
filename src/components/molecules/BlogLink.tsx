@@ -10,7 +10,7 @@ export const BlogLink: FC<{
 }> = ({ href, header, body, date }) => {
   return (
     <Link href={href}>
-      <a className="block bg-white py-1 px-2 duration-500 hover:bg-gray-100">
+      <a className="block bg-white duration-500 hover:bg-gray-100 sm:py-1 sm:px-2">
         <Text size={22} weight="bold">
           {header}
         </Text>
