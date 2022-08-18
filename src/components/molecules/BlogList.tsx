@@ -7,7 +7,7 @@ export const BlogList = () => {
     <StBlogList>
       <li>
         <BlogLink
-          href=""
+          href="/blog/1"
           header="This is a header"
           body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
           date="2022.07.11"
@@ -15,7 +15,7 @@ export const BlogList = () => {
       </li>
       <li>
         <BlogLink
-          href=""
+          href="/blog/1"
           header="This is a header"
           body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
           date="2022.07.11"
@@ -23,7 +23,7 @@ export const BlogList = () => {
       </li>
       <li>
         <BlogLink
-          href=""
+          href="/blog/2"
           header="This is a header"
           body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
           date="2022.07.11"
