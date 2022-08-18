@@ -10,6 +10,14 @@ function App({ Component, pageProps }: AppProps) {
       withGlobalStyles
       withNormalizeCSS
       theme={{
+        breakpoints: {
+          xs: 576,
+          sm: 640,
+          md: 768,
+          lg: 1024,
+          xl: 1280,
+          "2xl": 1536,
+        },
         components: {
           Container: {
             defaultProps: {
