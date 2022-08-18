@@ -14,7 +14,7 @@ export const BlogSection = () => {
         <PrimaryTitle order={2}>Blog</PrimaryTitle>
         <BlogList />
         <Box pt={24} className="text-center">
-          <PrimaryBtn href="#">View All</PrimaryBtn>
+          <PrimaryBtn href="/blog">View All</PrimaryBtn>
         </Box>
       </Container>
     </StSection>

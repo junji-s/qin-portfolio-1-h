@@ -14,7 +14,7 @@ export const PortfolioSection: FC = () => {
         <PrimaryTitle order={2}>Portfolio</PrimaryTitle>
         <PortfolioList />
         <Box pt={24} className="text-center">
-          <PrimaryBtn href="#">View All</PrimaryBtn>
+          <PrimaryBtn href="/portfolio">View All</PrimaryBtn>
         </Box>
       </Container>
     </StSection>

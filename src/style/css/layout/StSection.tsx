@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from "react";
 import { Box } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
-export const StSection: FC<{ children: ReactNode; style: any }> = ({
+export const StSection: FC<{ children: ReactNode; style?: any }> = ({
   children,
   style,
 }) => {

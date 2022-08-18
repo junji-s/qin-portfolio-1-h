@@ -1,18 +1,26 @@
 import React, { FC, ReactNode } from "react";
 
-import { Button } from "@mantine/core";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
-export const PrimaryBtn: FC<{ href: string; children: ReactNode }> = ({
-  href,
-  children,
-}) => {
+export const PrimaryBtn: FC<{
+  href: string;
+  children: ReactNode;
+  submit?: boolean;
+}> = ({ href, children, submit }) => {
+  if (submit) {
+    return <StPrimarySubmitBtn type="submit">{children}</StPrimarySubmitBtn>;
+  }
+
   return (
     <Link href={href} passHref>
       <StPrimaryBtn>{children}</StPrimaryBtn>
     </Link>
   );
+};
+
+export const PrimarySubmitBtn: FC<{ children: ReactNode }> = ({ children }) => {
+  return <StPrimarySubmitBtn type="submit">{children}</StPrimarySubmitBtn>;
 };
 
 const StPrimaryBtn = styled.a`
@@ -35,3 +43,5 @@ const StPrimaryBtn = styled.a`
     transition: all 0.5s;
   }
 `;
+
+const StPrimarySubmitBtn = StPrimaryBtn.withComponent("button");
