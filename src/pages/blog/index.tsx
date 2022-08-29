@@ -17,34 +17,31 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
   const { ref, inView } = useInView({});
 
   // 続きの記事を取得して配列に結合
-  const UseInfiniteScroll = async () => {
-    if (moreFlag === false) {
-      return;
-    }
-
-    setPageNumber((prev) => prev + 1);
-
-    // 続きの記事を取得
-    const data = await fetch("/api/infiniteScroll", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ limit: 5, offset: (pageNumber - 1) * 5 }),
-    });
-    const json: MicrocmsBlog[] = await data.json();
-    if (json.length === 0) {
-      setMoreFlag(false);
-      return;
-    }
-
-    const newBlogs = [...blogs, ...json];
-    setBlogs(newBlogs);
-  };
+  // const UseInfiniteScroll = async () => {
+  // if (moreFlag === false) {
+  //   return;
+  // }
+  // setPageNumber((prev) => prev + 1);
+  // // 続きの記事を取得
+  // const data = await fetch("/api/infiniteScroll", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ limit: 5, offset: (pageNumber - 1) * 5 }),
+  // });
+  // const json: MicrocmsBlog[] = await data.json();
+  // if (json.length === 0) {
+  //   setMoreFlag(false);
+  //   return;
+  // }
+  // const newBlogs = [...blogs, ...json];
+  // setBlogs(newBlogs);
+  // };
 
   useEffect(() => {
     if (inView) {
-      UseInfiniteScroll();
+      // UseInfiniteScroll();
       console.log("ok");
     } else {
       console.log("none");
