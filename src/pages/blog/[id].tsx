@@ -1,15 +1,17 @@
 import React from "react";
 import { Box, Container, Text } from "@mantine/core";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { FvLower } from "src/components/molecules/FvLower";
-import { PortfolioList } from "src/components/molecules/PortfolioList";
 import { StSection } from "src/style/css/layout/StSection";
 import { PrimaryBtn } from "src/components/atoms/PrimaryBtn";
+import { client } from "src/lib/microcms";
+import { MicrocmsBlog } from "src/type/microcms/blog";
+import { dayjsConversion } from "src/lib/dayjs";
 
-const BlogDetail: NextPage = ({}) => {
+const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
   return (
     <StSection style={{ minHeight: "100vh" }}>
-      <FvLower text="This is a header" />
+      <FvLower text={blog.title} />
 
       <Container>
         <Text
@@ -19,22 +21,14 @@ const BlogDetail: NextPage = ({}) => {
           className="u-avenir-bold"
           mb={8}
         >
-          2022.07.11
+          {dayjsConversion(blog.publishedAt)}
         </Text>
-        <Box>
-          <Text>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
-          </Text>
-          <Text my={15}>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
-          </Text>
-          <Text>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
-          </Text>
-        </Box>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${blog.content}`,
+          }}
+          className="prose"
+        />
         <Box pt={60} className="text-center">
           <PrimaryBtn href="/blog">View All</PrimaryBtn>
         </Box>
@@ -45,23 +39,24 @@ const BlogDetail: NextPage = ({}) => {
 
 export default BlogDetail;
 
-export async function getStaticProps() {
-  // const res = await fetch("https://.../posts");
-  // const posts = await res.json();
+// APIリクエストを行うパスを指定
+export const getStaticPaths = async () => {
+  const data = await client.get({ endpoint: "blogs" });
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  const paths = data.contents.map(
+    (content: MicrocmsBlog) => `/blog/${content.id}`
+  );
+  return { paths, fallback: false };
+};
+
+// microCMSへAPIリクエスト
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id;
+  const data = await client.get({ endpoint: "blogs", contentId: id });
+
   return {
     props: {
-      // posts,
+      blog: data,
     },
   };
-}
-
-// Generates `/posts/1` and `/posts/2`
-export async function getStaticPaths() {
-  return {
-    paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
-    fallback: false,
-  };
-}
+};

@@ -1,34 +1,32 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { FC } from "react";
 import { BlogLink } from "src/components/molecules/BlogLink";
+import { MicrocmsBlog } from "src/type/microcms/blog";
 
-export const BlogList = () => {
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+export const BlogList: FC<{ data: MicrocmsBlog[] }> = ({ data }) => {
   return (
     <StBlogList>
-      <li>
-        <BlogLink
-          href="/blog/1"
-          header="This is a header"
-          body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-          date="2022.07.11"
-        />
-      </li>
-      <li>
-        <BlogLink
-          href="/blog/1"
-          header="This is a header"
-          body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-          date="2022.07.11"
-        />
-      </li>
-      <li>
-        <BlogLink
-          href="/blog/2"
-          header="This is a header"
-          body="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-          date="2022.07.11"
-        />
-      </li>
+      {data.map((item) => {
+        return (
+          <li key={item.id}>
+            <BlogLink
+              href={`/blog/${item.id}`}
+              header={item.title}
+              body={item.content}
+              date={dayjs
+                .utc(item.publishedAt)
+                .tz("Asia/Tokyo")
+                .format("YYYY-MM-DD")}
+            />
+          </li>
+        );
+      })}
     </StBlogList>
   );
 };

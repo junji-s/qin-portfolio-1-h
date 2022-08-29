@@ -8,13 +8,16 @@ import { GitHubSection } from "src/components/organisms/index/GitHubSection";
 import { TwitterSection } from "src/components/organisms/index/TwitterSection";
 import { useMediaQuery } from "@mantine/hooks";
 
-const Home: NextPage = () => {
+import { MicrocmsBlog } from "../type/microcms/blog";
+import { UseGetPost } from "src/hooks/microcms/getPost";
+
+const Home: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
   const largeScreen = useMediaQuery("(min-width: 640px)");
 
   return (
     <>
       <IndexFv />
-      <BlogSection />
+      <BlogSection data={data} />
       <PortfolioSection />
       <Container>
         <Grid columns={2} grow gutter={largeScreen ? 60 : 0}>
@@ -28,6 +31,16 @@ const Home: NextPage = () => {
       </Container>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const data = await UseGetPost("blogs", 3);
+
+  return {
+    props: {
+      data: data.contents,
+    },
+  };
 };
 
 export default Home;
