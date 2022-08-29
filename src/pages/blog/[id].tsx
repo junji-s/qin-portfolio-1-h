@@ -59,7 +59,10 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async (
     };
   }
   const id = context.params.id;
-  const data = await client.get({ endpoint: "blogs", contentId: id });
+  const data = await client.getListDetail({
+    endpoint: "blogs",
+    contentId: context.params.id,
+  });
 
   return {
     props: {
