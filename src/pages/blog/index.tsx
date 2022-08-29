@@ -9,9 +9,12 @@ import { MicrocmsBlog } from "src/type/microcms/blog";
 
 import { useInView } from "react-intersection-observer";
 import { client } from "src/lib/microcms";
+import { MicroCMSListResponse } from "microcms-js-sdk";
 
-const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
-  const [blogs, setBlogs] = useState(data);
+const Blog: NextPage<MicroCMSListResponse<MicrocmsBlog>> = () => {
+  // console.log(props);
+
+  // const [blogs, setBlogs] = useState(data);
   const [pageNumber, setPageNumber] = useState(2);
   const [moreFlag, setMoreFlag] = useState(true);
 
@@ -55,7 +58,7 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
         <FvLower text="Blog" />
 
         <Container>
-          <BlogList data={blogs} />
+          {/* <BlogList data={blogs} /> */}
           <div ref={ref}></div>
         </Container>
       </StSection>
@@ -65,12 +68,14 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.getList({ endpoint: "blogs" });
+// export const getStaticProps: GetStaticProps<
+//   MicroCMSListResponse<MicrocmsBlog>
+// > = async () => {
+//   const data = await client.getList({ endpoint: "blogs" });
 
-  return {
-    props: {
-      data: data.contents,
-    },
-  };
-};
+//   return {
+//     props: {
+//       data: data,
+//     },
+//   };
+// };
