@@ -1,6 +1,6 @@
-import { Title, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import Link from "next/link";
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 
 export const BlogLink: FC<{
   href: string;
