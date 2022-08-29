@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Container, Text } from "@mantine/core";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { FvLower } from "src/components/molecules/FvLower";
-import { PortfolioList } from "src/components/molecules/PortfolioList";
 import { StSection } from "src/style/css/layout/StSection";
 import { PrimaryBtn } from "src/components/atoms/PrimaryBtn";
 

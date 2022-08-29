@@ -1,62 +1,55 @@
 import { Container, Text } from "@mantine/core";
-<<<<<<< HEAD
 import type { GetStaticProps, NextPage } from "next";
 import { useCallback, useEffect, useRef, useState } from "react";
-=======
-import type { NextPage } from "next";
->>>>>>> parent of 1c9defa (ブログを実装)
 import { BlogList } from "src/components/molecules/BlogList";
 import { FvLower } from "src/components/molecules/FvLower";
 import { StSection } from "src/style/css/layout/StSection";
-<<<<<<< HEAD
 import { MicrocmsBlog } from "src/type/microcms/blog";
 
 import { useInView } from "react-intersection-observer";
 import { client } from "src/lib/microcms";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 
-const Blog: NextPage<MicroCMSListResponse<MicrocmsBlog>> = () => {
-  // console.log(props);
+// const Blog: NextPage = () => {
+//   // console.log(props);
 
-  // const [blogs, setBlogs] = useState(data);
-  const [pageNumber, setPageNumber] = useState(2);
-  const [moreFlag, setMoreFlag] = useState(true);
+//   // const [blogs, setBlogs] = useState(data);
+//   const [pageNumber, setPageNumber] = useState(2);
+//   const [moreFlag, setMoreFlag] = useState(true);
 
-  const { ref, inView } = useInView({});
+//   const { ref, inView } = useInView({});
 
-  // 続きの記事を取得して配列に結合
-  // const UseInfiniteScroll = async () => {
-  // if (moreFlag === false) {
-  //   return;
-  // }
-  // setPageNumber((prev) => prev + 1);
-  // // 続きの記事を取得
-  // const data = await fetch("/api/infiniteScroll", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({ limit: 5, offset: (pageNumber - 1) * 5 }),
-  // });
-  // const json: MicrocmsBlog[] = await data.json();
-  // if (json.length === 0) {
-  //   setMoreFlag(false);
-  //   return;
-  // }
-  // const newBlogs = [...blogs, ...json];
-  // setBlogs(newBlogs);
-  // };
+//   // 続きの記事を取得して配列に結合
+//   // const UseInfiniteScroll = async () => {
+//   // if (moreFlag === false) {
+//   //   return;
+//   // }
+//   // setPageNumber((prev) => prev + 1);
+//   // // 続きの記事を取得
+//   // const data = await fetch("/api/infiniteScroll", {
+//   //   method: "POST",
+//   //   headers: {
+//   //     "Content-Type": "application/json",
+//   //   },
+//   //   body: JSON.stringify({ limit: 5, offset: (pageNumber - 1) * 5 }),
+//   // });
+//   // const json: MicrocmsBlog[] = await data.json();
+//   // if (json.length === 0) {
+//   //   setMoreFlag(false);
+//   //   return;
+//   // }
+//   // const newBlogs = [...blogs, ...json];
+//   // setBlogs(newBlogs);
+//   // };
 
-  useEffect(() => {
-    if (inView) {
-      // UseInfiniteScroll();
-      console.log("ok");
-    } else {
-      console.log("none");
-    }
-  });
-=======
->>>>>>> parent of 1c9defa (ブログを実装)
+//   useEffect(() => {
+//     if (inView) {
+//       // UseInfiniteScroll();
+//       console.log("ok");
+//     } else {
+//       console.log("none");
+//     }
+//   });
 
 const Blog: NextPage = () => {
   return (
@@ -65,12 +58,9 @@ const Blog: NextPage = () => {
         <FvLower text="Blog" />
 
         <Container>
-<<<<<<< HEAD
           {/* <BlogList data={blogs} /> */}
-          <div ref={ref}></div>
-=======
+          {/* <div ref={ref}></div> */}
           <BlogList />
->>>>>>> parent of 1c9defa (ブログを実装)
         </Container>
       </StSection>
     </>
@@ -78,7 +68,6 @@ const Blog: NextPage = () => {
 };
 
 export default Blog;
-<<<<<<< HEAD
 
 // export const getStaticProps: GetStaticProps<
 //   MicroCMSListResponse<MicrocmsBlog>
@@ -91,5 +80,3 @@ export default Blog;
 //     },
 //   };
 // };
-=======
->>>>>>> parent of 1c9defa (ブログを実装)
