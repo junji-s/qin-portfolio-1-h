@@ -60,7 +60,7 @@ const Blog: NextPage = () => {
         <Container>
           {/* <BlogList data={blogs} /> */}
           {/* <div ref={ref}></div> */}
-          <BlogList />
+          {/* <BlogList  /> */}
         </Container>
       </StSection>
     </>
