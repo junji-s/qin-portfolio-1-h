@@ -16,12 +16,6 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
 
   const { ref, inView } = useInView({});
 
-  useEffect(() => {
-    if (inView) {
-      UseInfiniteScroll();
-    }
-  }, [inView]);
-
   // 続きの記事を取得して配列に結合
   const UseInfiniteScroll = async () => {
     if (moreFlag === false) {
@@ -47,6 +41,15 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
     const newBlogs = [...blogs, ...json];
     setBlogs(newBlogs);
   };
+
+  useEffect(() => {
+    if (inView) {
+      UseInfiniteScroll();
+      console.log("ok");
+    } else {
+      console.log("none");
+    }
+  });
 
   return (
     <>

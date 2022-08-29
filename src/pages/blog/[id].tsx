@@ -11,10 +11,10 @@ import { dayjsConversion } from "src/lib/dayjs";
 const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
   return (
     <StSection style={{ minHeight: "100vh" }}>
-      <FvLower text={blog.title} />
+      {/* <FvLower text={blog.title} /> */}
 
       <Container>
-        <Text
+        {/* <Text
           size={12}
           color="#909296"
           weight={700}
@@ -28,7 +28,7 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
             __html: `${blog.content}`,
           }}
           className="prose"
-        />
+        /> */}
         <Box pt={60} className="text-center">
           <PrimaryBtn href="/blog">View All</PrimaryBtn>
         </Box>
@@ -40,33 +40,32 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
 export default BlogDetail;
 
 // APIリクエストを行うパスを指定
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const data = await client.getList({ endpoint: "blogs" });
+// export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
+//   const data = await client.getList({ endpoint: "blogs" });
 
-  const paths = data.contents.map(
-    (content: MicrocmsBlog) => `/blog/${content.id}`
-  );
-  return { paths, fallback: false };
-};
+//   const paths = data.contents.map(
+//     (content: MicrocmsBlog) => `/blog/${content.id}`
+//   );
+//   return { paths, fallback: false };
+// };
 
 // microCMSへAPIリクエスト
-export const getStaticProps: GetStaticProps<{}, { id: string }> = async (
-  context
-) => {
-  if (!context.params) {
-    return {
-      notFound: true,
-    };
-  }
-  const id = context.params.id;
-  const data = await client.getListDetail({
-    endpoint: "blogs",
-    contentId: context.params.id,
-  });
+// export const getStaticProps: GetStaticProps<{}, { id: string }> = async (
+//   context
+// ) => {
+//   if (!context.params) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   const data = await client.getListDetail({
+//     endpoint: "blogs",
+//     contentId: context.params.id,
+//   });
 
-  return {
-    props: {
-      blog: data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       blog: data,
+//     },
+//   };
+// };
