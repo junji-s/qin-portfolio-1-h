@@ -1,5 +1,5 @@
 import { Container, Text } from "@mantine/core";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BlogList } from "src/components/molecules/BlogList";
 import { FvLower } from "src/components/molecules/FvLower";
@@ -8,6 +8,7 @@ import { StSection } from "src/style/css/layout/StSection";
 import { MicrocmsBlog } from "src/type/microcms/blog";
 
 import { useInView } from "react-intersection-observer";
+import { client } from "src/lib/microcms";
 
 const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
   const [blogs, setBlogs] = useState(data);
@@ -64,8 +65,8 @@ const Blog: NextPage<{ data: MicrocmsBlog[] }> = ({ data }) => {
 
 export default Blog;
 
-export const getStaticProps = async () => {
-  const data = await UseGetPost("blogs");
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await client.getList({ endpoint: "blogs" });
 
   return {
     props: {
