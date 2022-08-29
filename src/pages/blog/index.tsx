@@ -1,10 +1,14 @@
 import { Container, Text } from "@mantine/core";
+<<<<<<< HEAD
 import type { GetStaticProps, NextPage } from "next";
 import { useCallback, useEffect, useRef, useState } from "react";
+=======
+import type { NextPage } from "next";
+>>>>>>> parent of 1c9defa (ブログを実装)
 import { BlogList } from "src/components/molecules/BlogList";
 import { FvLower } from "src/components/molecules/FvLower";
-import { UseGetPost } from "src/hooks/microcms/getPost";
 import { StSection } from "src/style/css/layout/StSection";
+<<<<<<< HEAD
 import { MicrocmsBlog } from "src/type/microcms/blog";
 
 import { useInView } from "react-intersection-observer";
@@ -51,15 +55,22 @@ const Blog: NextPage<MicroCMSListResponse<MicrocmsBlog>> = () => {
       console.log("none");
     }
   });
+=======
+>>>>>>> parent of 1c9defa (ブログを実装)
 
+const Blog: NextPage = () => {
   return (
     <>
       <StSection style={{ minHeight: "100vh" }}>
         <FvLower text="Blog" />
 
         <Container>
+<<<<<<< HEAD
           {/* <BlogList data={blogs} /> */}
           <div ref={ref}></div>
+=======
+          <BlogList />
+>>>>>>> parent of 1c9defa (ブログを実装)
         </Container>
       </StSection>
     </>
@@ -67,6 +78,7 @@ const Blog: NextPage<MicroCMSListResponse<MicrocmsBlog>> = () => {
 };
 
 export default Blog;
+<<<<<<< HEAD
 
 // export const getStaticProps: GetStaticProps<
 //   MicroCMSListResponse<MicrocmsBlog>
@@ -79,3 +91,5 @@ export default Blog;
 //     },
 //   };
 // };
+=======
+>>>>>>> parent of 1c9defa (ブログを実装)

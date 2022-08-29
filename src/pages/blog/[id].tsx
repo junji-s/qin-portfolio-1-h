@@ -1,17 +1,23 @@
 import React from "react";
 import { Box, Container, Text } from "@mantine/core";
+<<<<<<< HEAD
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+=======
+import type { NextPage } from "next";
+>>>>>>> parent of 1c9defa (ブログを実装)
 import { FvLower } from "src/components/molecules/FvLower";
+import { PortfolioList } from "src/components/molecules/PortfolioList";
 import { StSection } from "src/style/css/layout/StSection";
 import { PrimaryBtn } from "src/components/atoms/PrimaryBtn";
-import { client } from "src/lib/microcms";
-import { MicrocmsBlog } from "src/type/microcms/blog";
-import { dayjsConversion } from "src/lib/dayjs";
 
-const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
+const BlogDetail: NextPage = ({}) => {
   return (
     <StSection style={{ minHeight: "100vh" }}>
+<<<<<<< HEAD
       {/* <FvLower text={blog.title} /> */}
+=======
+      <FvLower text="This is a header" />
+>>>>>>> parent of 1c9defa (ブログを実装)
 
       <Container>
         {/* <Text
@@ -21,14 +27,31 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
           className="u-avenir-bold"
           mb={8}
         >
-          {dayjsConversion(blog.publishedAt)}
+          2022.07.11
         </Text>
+<<<<<<< HEAD
         <div
           dangerouslySetInnerHTML={{
             __html: `${blog.content}`,
           }}
           className="prose"
         /> */}
+=======
+        <Box>
+          <Text>
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit.
+          </Text>
+          <Text my={15}>
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit.
+          </Text>
+          <Text>
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit.
+          </Text>
+        </Box>
+>>>>>>> parent of 1c9defa (ブログを実装)
         <Box pt={60} className="text-center">
           <PrimaryBtn href="/blog">View All</PrimaryBtn>
         </Box>
@@ -39,6 +62,7 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
 
 export default BlogDetail;
 
+<<<<<<< HEAD
 // APIリクエストを行うパスを指定
 // export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
 //   const data = await client.getList({ endpoint: "blogs" });
@@ -69,3 +93,25 @@ export default BlogDetail;
 //     },
 //   };
 // };
+=======
+export async function getStaticProps() {
+  // const res = await fetch("https://.../posts");
+  // const posts = await res.json();
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      // posts,
+    },
+  };
+}
+
+// Generates `/posts/1` and `/posts/2`
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
+    fallback: false,
+  };
+}
+>>>>>>> parent of 1c9defa (ブログを実装)
