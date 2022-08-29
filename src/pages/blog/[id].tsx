@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Text } from "@mantine/core";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { FvLower } from "src/components/molecules/FvLower";
 import { StSection } from "src/style/css/layout/StSection";
 import { PrimaryBtn } from "src/components/atoms/PrimaryBtn";
@@ -40,8 +40,8 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
 export default BlogDetail;
 
 // APIリクエストを行うパスを指定
-export const getStaticPaths = async () => {
-  const data = await client.get({ endpoint: "blogs" });
+export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
+  const data = await client.getList({ endpoint: "blogs" });
 
   const paths = data.contents.map(
     (content: MicrocmsBlog) => `/blog/${content.id}`
