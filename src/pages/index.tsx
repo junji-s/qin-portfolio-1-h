@@ -8,17 +8,20 @@ import { GitHubSection } from "src/components/organisms/index/GitHubSection";
 import { TwitterSection } from "src/components/organisms/index/TwitterSection";
 import { useMediaQuery } from "@mantine/hooks";
 import { client } from "src/lib/microcms";
-import { MicroCMSListResponse } from "microcms-js-sdk";
-import { MicrocmsBlog, MicrocmsBlogObj } from "src/type/microcms/blog";
+import { MicrocmsBlogObj } from "src/type/microcms/blog";
+import { MicrocmsPortfolioObj } from "src/type/microcms/portfolio";
 
-const Home: NextPage<MicroCMSListResponse<MicrocmsBlog>> = (props) => {
+const Home: NextPage<{
+  blog: MicrocmsBlogObj;
+  portfolio: MicrocmsPortfolioObj;
+}> = (props) => {
   const largeScreen = useMediaQuery("(min-width: 640px)");
 
   return (
     <>
       <IndexFv />
-      <BlogSection blogs={props.contents} />
-      <PortfolioSection />
+      <BlogSection blogs={props.blog.contents} />
+      <PortfolioSection portfolio={props.portfolio.contents} />
       <Container>
         <Grid columns={2} grow gutter={largeScreen ? 60 : 0}>
           <Grid.Col span={largeScreen ? 1 : 2}>
@@ -33,17 +36,24 @@ const Home: NextPage<MicroCMSListResponse<MicrocmsBlog>> = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<
-  MicroCMSListResponse<MicrocmsBlogObj>
-> = async () => {
-  const data = await client.getList({
+export const getStaticProps = async () => {
+  const blog = await client.getList({
     endpoint: "blogs",
     queries: {
       limit: 3,
     },
   });
+  const portfolio = await client.getList({
+    endpoint: "portfolio",
+    queries: {
+      limit: 6,
+    },
+  });
   return {
-    props: data,
+    props: {
+      blog,
+      portfolio,
+    },
   };
 };
 

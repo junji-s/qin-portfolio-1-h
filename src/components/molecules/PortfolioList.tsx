@@ -1,72 +1,27 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
 import { PortfolioLink } from "src/components/molecules/PortfolioLink";
+import { dayjsConversion } from "src/lib/dayjs";
+import { MicrocmsPortfolio } from "src/type/microcms/portfolio";
 
-import thum from "../../../public/img/thumbnail.png";
-
-export const PortfolioList: FC = () => {
+export const PortfolioList: FC<{ portfolio: MicrocmsPortfolio[] }> = ({
+  portfolio,
+}) => {
   return (
     <StPortfolioList>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={316}
-          height={184}
-          title="IT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={316}
-          height={184}
-          title="IT KINGDOM IT KINGDOMIT KINGDOMIT KINGDOMIT KINGDOMIT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={5001}
-          height={2626}
-          title="IT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={316}
-          height={184}
-          title="IT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={5001}
-          height={2626}
-          title="IT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
-      <li>
-        <PortfolioLink
-          src="/img/thumbnail.png"
-          width={316}
-          height={184}
-          title="IT KINGDOM"
-          desc="当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。"
-          date="2021.10 - 2021.12"
-        />
-      </li>
+      {portfolio.map((item) => {
+        return (
+          <li key={item.id}>
+            <PortfolioLink
+              src={item.img.url}
+              title={item.title}
+              desc={item.content}
+              date={dayjsConversion(item.publishedAt)}
+              href={item.url}
+            />
+          </li>
+        );
+      })}
     </StPortfolioList>
   );
 };
