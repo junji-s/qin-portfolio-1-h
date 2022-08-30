@@ -45,7 +45,6 @@ export const ContactForm: FC = () => {
       setStatus("送信成功");
     } catch (error) {
       console.error("Fetch error: ", error);
-      alert(JSON.stringify(error));
       setStatus("送信失敗");
     }
   };
