@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "@emotion/styled";
-import Link from "next/link";
 import Image from "next/image";
 import { Box, ScrollArea, Text } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
 
 type TypePortfolioLink = {
   src: string;
@@ -19,21 +19,33 @@ export const PortfolioLink: FC<TypePortfolioLink> = ({
   date,
   href,
 }) => {
+  const [loading, setLoading] = useState(true);
+  const loadingImage = () => {
+    setLoading(false);
+  };
+
   return (
-    <StPortfolioLink href={href} target="_blank">
-      <ScrollArea type="never" className="scrollArea">
-        <Image src={src} alt="サムネイル画像" layout="fill" />
-      </ScrollArea>
-      <Box pb={5} px={10} className="flex flex-1 flex-col">
-        <Text size={22} weight={700} className="... truncate " mt={5} mb={8}>
-          {title}
-        </Text>
-        <Text size="md" mb={15}>
-          {desc}
-        </Text>
-        <Text className="date">{date}</Text>
-      </Box>
-    </StPortfolioLink>
+    <Skeleton visible={loading}>
+      <StPortfolioLink href={href} target="_blank">
+        <ScrollArea type="never" className="scrollArea">
+          <Image
+            src={src}
+            alt="サムネイル画像"
+            layout="fill"
+            onLoadingComplete={loadingImage}
+          />
+        </ScrollArea>
+        <Box pb={5} px={10} className="flex flex-1 flex-col">
+          <Text size={22} weight={700} className="... truncate " mt={5} mb={8}>
+            {title}
+          </Text>
+          <Text size="md" mb={15}>
+            {desc}
+          </Text>
+          <Text className="date">{date}</Text>
+        </Box>
+      </StPortfolioLink>
+    </Skeleton>
   );
 };
 
