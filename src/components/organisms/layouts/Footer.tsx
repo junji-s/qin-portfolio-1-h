@@ -18,5 +18,8 @@ const StFooter = styled.footer`
   .copy {
     color: #868e96;
     font-size: 10px;
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 `;
