@@ -18,7 +18,6 @@ export default async function handler(
     });
     res.status(200).json("OK");
   } catch (err) {
-    console.error(err);
-    res.statusCode = 500;
+    res.status(500).json({ error: "送信に失敗しました" });
   }
 }

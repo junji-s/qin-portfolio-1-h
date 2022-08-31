@@ -2,6 +2,7 @@ import "src/lib/tailwind.css";
 import "src/style/css/global.css";
 import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 import { DefaultTemplate } from "src/components/templates/DefaultTemplate";
 
 function App({ Component, pageProps }: AppProps) {
@@ -29,9 +30,11 @@ function App({ Component, pageProps }: AppProps) {
         },
       }}
     >
-      <DefaultTemplate>
-        <Component {...pageProps} />
-      </DefaultTemplate>
+      <NotificationsProvider>
+        <DefaultTemplate>
+          <Component {...pageProps} />
+        </DefaultTemplate>
+      </NotificationsProvider>
     </MantineProvider>
   );
 }

@@ -1,20 +1,12 @@
-import React, { FC, FormEventHandler, useState } from "react";
+import React, { FC } from "react";
 
-import {
-  TextInput,
-  Checkbox,
-  Button,
-  Group,
-  Box,
-  Textarea,
-} from "@mantine/core";
+import { TextInput, Group, Box, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { PrimarySubmitBtn } from "src/components/atoms/PrimaryBtn";
+import { showNotification, updateNotification } from "@mantine/notifications";
+import { Loader } from "@mantine/core";
 
 export const ContactForm: FC = () => {
-  type Status = "" | "送信成功" | "送信失敗";
-  const [status, setStatus] = useState<Status>("");
-
   const form = useForm({
     initialValues: {
       email: "",
@@ -32,6 +24,14 @@ export const ContactForm: FC = () => {
   });
 
   const handleSubmit = async (values: typeof form.values) => {
+    showNotification({
+      id: "submit",
+      title: "送信処理を行なっております",
+      message: "少々お待ちください",
+      autoClose: false,
+      loading: true,
+    });
+
     try {
       await fetch("/api/contact", {
         method: "POST",
@@ -40,12 +40,28 @@ export const ContactForm: FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
+      }).then((data) => {
+        if (!data.ok) {
+          throw new Error("送信に失敗しました");
+        }
       });
+
       form.reset();
-      setStatus("送信成功");
+      updateNotification({
+        id: "submit",
+        color: "teal",
+        title: "送信成功",
+        message: "正常にメールの送信が成功しました。",
+        autoClose: 2000,
+      });
     } catch (error) {
-      console.error("Fetch error: ", error);
-      setStatus("送信失敗");
+      updateNotification({
+        id: "submit",
+        color: "red",
+        title: "送信に失敗しました",
+        message: "お手数ですが、ページを更新した後、再度送信してください。",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -83,14 +99,6 @@ export const ContactForm: FC = () => {
         <Group position="center" mt="md">
           <PrimarySubmitBtn>Send message</PrimarySubmitBtn>
         </Group>
-        {status === "送信成功" && (
-          <p className="mt-3 text-center text-teal-500">送信に成功しました！</p>
-        )}
-        {status === "送信失敗" && (
-          <p className="mt-3 text-center text-red-500">
-            送信に失敗しました。。
-          </p>
-        )}
       </form>
     </Box>
   );
