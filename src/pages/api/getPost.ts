@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { useState } from "react";
 import { client } from "src/lib/microcms";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
