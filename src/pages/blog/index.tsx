@@ -1,6 +1,6 @@
 import { Container, Text } from "@mantine/core";
 import type { NextPage } from "next";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { BlogList } from "src/components/molecules/BlogList";
 import { FvLower } from "src/components/molecules/FvLower";
 import { StSection } from "src/style/css/layout/StSection";
