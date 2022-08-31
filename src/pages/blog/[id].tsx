@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Text } from "@mantine/core";
+import { Box, Container, Text, TypographyStylesProvider } from "@mantine/core";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { FvLower } from "src/components/molecules/FvLower";
 import { StSection } from "src/style/css/layout/StSection";
@@ -23,11 +23,13 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
         >
           {dayjsConversion(blog.publishedAt)}
         </Text>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${blog.content}`,
-          }}
-        />
+        <TypographyStylesProvider>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${blog.content}`,
+            }}
+          />
+        </TypographyStylesProvider>
         <Box pt={60} className="text-center">
           <PrimaryBtn href="/blog">View All</PrimaryBtn>
         </Box>

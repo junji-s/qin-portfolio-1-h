@@ -2,6 +2,8 @@ import { Text } from "@mantine/core";
 import Link from "next/link";
 import React, { FC } from "react";
 
+import { TypographyStylesProvider } from "@mantine/core";
+
 export const BlogLink: FC<{
   href: string;
   header: string;
@@ -15,7 +17,7 @@ export const BlogLink: FC<{
           {header}
         </Text>
         <Text size={16} my={8} className="... truncate">
-          {body}
+          {body.match(/[^\<\>]+(?=\<[^\<\>]+\>)|[^\<\>]+$/g)}
         </Text>
         <Text size={12}>{date}</Text>
       </a>
