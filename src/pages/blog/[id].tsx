@@ -27,6 +27,7 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
           dangerouslySetInnerHTML={{
             __html: `${blog.content}`,
           }}
+          className="prose"
         />
         <Box pt={60} className="text-center">
           <PrimaryBtn href="/blog">View All</PrimaryBtn>
@@ -39,15 +40,12 @@ const BlogDetail: NextPage<{ blog: MicrocmsBlog }> = ({ blog }) => {
 export default BlogDetail;
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const data = await client.getList({
-    endpoint: "blogs",
-    queries: { limit: 5 },
-  });
+  const data = await client.getList({ endpoint: "blogs" });
 
   const paths = data.contents.map(
     (content: MicrocmsBlog) => `/blog/${content.id}`
   );
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps<{}, { id: string }> = async (
@@ -58,20 +56,14 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async (
       notFound: true,
     };
   }
-  try {
-    const data = await client.getListDetail({
-      endpoint: "blogs",
-      contentId: context.params.id,
-    });
+  const data = await client.getListDetail({
+    endpoint: "blogs",
+    contentId: context.params.id,
+  });
 
-    return {
-      props: {
-        blog: data,
-      },
-    };
-  } catch {
-    return {
-      notFound: true,
-    };
-  }
+  return {
+    props: {
+      blog: data,
+    },
+  };
 };
