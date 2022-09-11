@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 
 import { IndexFv } from "src/components/organisms/index/IndexFv";
 import { BlogSection } from "src/components/organisms/index/BlogSection";

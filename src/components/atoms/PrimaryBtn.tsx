@@ -7,15 +7,24 @@ export const PrimaryBtn: FC<{
   href: string;
   children: ReactNode;
   submit?: boolean;
-}> = ({ href, children, submit }) => {
+  target?: boolean;
+}> = ({ href, children, submit, target }) => {
   if (submit) {
     return <StPrimarySubmitBtn type="submit">{children}</StPrimarySubmitBtn>;
   }
 
   return (
-    <Link href={href} passHref>
-      <StPrimaryBtn>{children}</StPrimaryBtn>
-    </Link>
+    <>
+      {target ? (
+        <StPrimaryBtn href={href} target="_blank" rel="noreferrer">
+          {children}
+        </StPrimaryBtn>
+      ) : (
+        <Link href={href} passHref>
+          <StPrimaryBtn>{children}</StPrimaryBtn>
+        </Link>
+      )}
+    </>
   );
 };
 
