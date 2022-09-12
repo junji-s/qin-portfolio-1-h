@@ -3,6 +3,6 @@ module.exports = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ["images.microcms-assets.io", "pbs.twimg.com"],
+    domains: ["images.microcms-assets.io"],
   },
 };
